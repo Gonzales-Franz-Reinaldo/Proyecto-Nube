@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -52,11 +53,18 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
 
-
-
     // Google Sign-In SDK
     implementation ("com.google.android.gms:play-services-auth:20.5.0")
     // Firebase Authentication
     implementation ("com.google.firebase:firebase-auth")
+
+
+    implementation ("androidx.recyclerview:recyclerview:1.3.1")
+    implementation ("com.google.android.material:material:1.9.0")
+
+    // Otras dependencias que ya tienes
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
 
 }

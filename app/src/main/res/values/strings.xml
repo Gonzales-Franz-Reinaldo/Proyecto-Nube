@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Proyecto Nube</string>
+    <string name="book_image">Imagen del libro</string>
 </resources>
