@@ -54,17 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             String password = passwordInput.getText().toString();
             String confirmPassword = confirmPasswordInput.getText().toString();
 
-//            // validamos los campos
-//            if(name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
-//                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            // validamos que las contraseñas sean iguales
-//            if(!password.equals(confirmPassword)){
-//                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
+
             // Validaciones de los campos
             if (!InputValidator.isValidUsername(name)) {
                 Toast.makeText(this, "El nombre de usuario debe tener al menos 3 caracteres", Toast.LENGTH_SHORT).show();
