@@ -1,9 +1,12 @@
 package com.example.proyectonube.view.main;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,8 +27,10 @@ public class BookListFragment extends Fragment {
     // Referencias a los elementos de la interfaz
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
+    private EditText searchBar;
     private BookAdapter adapter; // Adaptador para mostrar los libros
     private List<Book> listaLibros = new ArrayList<>(); // Lista de libros obtenidos
+    private List<Book> listaFiltrada = new ArrayList<>(); // Lista de libros filtrados
     private BookRepository bookRepository; // Repositorio para obtener datos de Firestore
 
 
@@ -61,22 +66,42 @@ public class BookListFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerViewBooks); // Inicializa el RecyclerView
         progressBar = view.findViewById(R.id.progressBar); // Inicializa el ProgressBar
+        searchBar = getActivity().findViewById(R.id.searchInput); // Inicializa el EditText
 
         setupRecyclerView(); // Configura el RecyclerView
+        setupSearchBar(); // Configura la barra de búsqueda
         loadBooks(); // Carga los libros
 
         return view;
     }
 
     private void setupRecyclerView() {
-        // Configura el RecyclerView con un diseño de cuadrícula de 2 columnas
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        adapter = new BookAdapter(listaLibros, getContext(), book -> {
+        adapter = new BookAdapter(listaFiltrada, getContext(), book -> {
             if (listener != null) {
-                listener.onBookSelected(book); // Notifica la selección de un libro
+                listener.onBookSelected(book);
             }
         });
-        recyclerView.setAdapter(adapter); // Conecta el adaptador al RecyclerView
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void setupSearchBar(){
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filtrarLibros(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void loadBooks() {
@@ -88,6 +113,8 @@ public class BookListFragment extends Fragment {
                 if (libros != null) {
                     listaLibros.clear(); // Limpia la lista actual
                     listaLibros.addAll(libros); // Agrega los nuevos libros
+                    listaFiltrada.clear();
+                    listaFiltrada.addAll(libros);
                     adapter.notifyDataSetChanged(); // Actualiza la interfaz
                 } else {
                     Toast.makeText(getContext(), "No se encontraron libros", Toast.LENGTH_SHORT).show();
@@ -101,4 +128,25 @@ public class BookListFragment extends Fragment {
             }
         });
     }
+
+
+    private void filtrarLibros(String texto) {
+        listaFiltrada.clear();
+
+        if (texto.isEmpty()) {
+            listaFiltrada.addAll(listaLibros); // Mostrar todos los libros si no hay texto
+        } else {
+            texto = texto.toLowerCase(); // Convertir la consulta a minúsculas para una búsqueda insensible a mayúsculas
+            for (Book libro : listaLibros) {
+                if (libro.getTitulo() != null && libro.getTitulo().toLowerCase().contains(texto)) {
+                    listaFiltrada.add(libro); // Si el título contiene la consulta, agregar a la lista
+                } else if (libro.getAutor() != null && libro.getAutor().toLowerCase().contains(texto)) {
+                    listaFiltrada.add(libro); // Si el autor contiene la consulta, agregar a la lista
+                }
+            }
+        }
+
+        adapter.notifyDataSetChanged(); // Notificar al adaptador los cambios
+    }
+
 }

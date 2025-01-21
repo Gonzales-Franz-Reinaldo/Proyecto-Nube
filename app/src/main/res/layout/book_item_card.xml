@@ -29,6 +29,15 @@
         android:maxLines="2"
         android:ellipsize="end" />
 
+<!--    Autores del libro-->
+    <TextView
+        android:id="@+id/cardAutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Autor"
+        android:textSize="14sp"
+        android:paddingBottom="4dp" />
+
     <!-- Fecha de publicación -->
     <TextView
         android:id="@+id/cardFecha_publicacion"

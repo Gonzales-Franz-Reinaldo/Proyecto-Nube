@@ -50,36 +50,38 @@
             android:src="@drawable/ic_search" />
     </LinearLayout>
 
-    <!-- Categorías rápidas -->
-    <HorizontalScrollView
+    <!-- Barra de búsqueda -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="8dp">
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!-- Ícono de búsqueda en la barra -->
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            app:tint="@color/black"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/search_icon_description" />
+
+        <!-- Campo de texto para buscar -->
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="All" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Disponibles" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Top book" />
-        </LinearLayout>
-    </HorizontalScrollView>
+            android:layout_weight="1"
+            android:hint="Buscar libros"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray" />
+    </LinearLayout>
 
     <!-- Contenedor para lista de libros y detalles -->
     <FrameLayout

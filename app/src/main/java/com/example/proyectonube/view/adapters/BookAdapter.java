@@ -51,6 +51,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
         // Configura los datos del libro en las vistas correspondientes
         holder.titulo.setText(libro.getTitulo());
+        holder.autor.setText(libro.getAutor());
         holder.fecha_publicacion.setText(libro.getFecha_publicacion());
 
         // Usa Glide para cargar la imagen del libro desde una URL
@@ -74,7 +75,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     // Clase interna que representa los elementos del RecyclerView (ViewHolder)
     static class BookViewHolder extends RecyclerView.ViewHolder {
         // Vistas individuales dentro de la tarjeta de libro
-        TextView titulo, fecha_publicacion; // Título y fecha de publicación del libro
+        TextView titulo, autor, fecha_publicacion; // Título y fecha de publicación del libro
         ImageView fotografia; // Imagen del libro
 
         // Constructor que recibe la vista inflada y asigna las vistas específicas
@@ -82,6 +83,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             super(itemView);
             // Asocia las vistas del layout book_item_card.xml con las variables de la clase
             titulo = itemView.findViewById(R.id.cardTitulo);
+            autor = itemView.findViewById(R.id.cardAutor);
             fecha_publicacion = itemView.findViewById(R.id.cardFecha_publicacion);
             fotografia = itemView.findViewById(R.id.cardFotografia);
         }
