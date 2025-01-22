@@ -2,6 +2,7 @@ package com.example.proyectonube.model;
 
 import java.io.Serializable;
 public class Book implements Serializable{
+    private String id; // Identificador único del documento en Firestore
     private String fotografia;
     private String titulo;
     private String autor;
@@ -13,13 +14,23 @@ public class Book implements Serializable{
         // Constructor vacío requerido para Firestore
     }
 
-    public Book(String fotografia, String titulo, String autor, String editorial, String fecha_publicacion, String descripcion) {
+    public Book(String id, String fotografia, String titulo, String autor, String editorial, String fecha_publicacion, String descripcion) {
+        this.id = id;
         this.fotografia = fotografia;
         this.titulo = titulo;
         this.autor = autor;
         this.editorial = editorial;
         this.fecha_publicacion = fecha_publicacion;
         this.descripcion = descripcion;
+    }
+
+    // Getters y setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFotografia() {

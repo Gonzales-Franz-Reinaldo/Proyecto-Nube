@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:elevation="4dp"
+    android:layout_margin="8dp"
+    android:padding="8dp">
+
+    <!-- Imagen del libro -->
+    <ImageView
+        android:id="@+id/libraryBookFotografia"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/book_image" />
+
+    <!-- Contenedor para información del libro -->
+    <LinearLayout
+        android:id="@+id/infoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/libraryBookFotografia"
+        android:padding="8dp"
+        android:layout_toStartOf="@id/iconsContainer">
+
+        <!-- Título del libro -->
+        <TextView
+            android:id="@+id/libraryBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título del Libro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:paddingBottom="4dp" />
+
+        <!-- Autor del libro -->
+        <TextView
+            android:id="@+id/libraryBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autor"
+            android:textSize="14sp"
+            android:paddingBottom="4dp" />
+
+        <!-- Editorial del libro -->
+        <TextView
+            android:id="@+id/libraryBookPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editorial"
+            android:textSize="14sp"
+            android:paddingBottom="4dp" />
+
+        <!-- Fecha de publicación -->
+        <TextView
+            android:id="@+id/libraryBookFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Publicación"
+            android:textSize="14sp"
+            android:paddingBottom="8dp" />
+    </LinearLayout>
+
+    <!-- Contenedor de íconos -->
+    <LinearLayout
+        android:id="@+id/iconsContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/libraryBookFotografia"
+        android:layout_marginTop="8dp">
+
+        <!-- Ícono de Editar -->
+        <ImageButton
+            android:id="@+id/btnEditBook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/addButton"
+            android:contentDescription="Editar libro"
+            android:src="@drawable/ic_edit" />
+
+        <!-- Ícono de Eliminar -->
+        <ImageButton
+            android:id="@+id/btnDeleteBook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/red"
+            android:contentDescription="Eliminar libro"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
+</RelativeLayout>

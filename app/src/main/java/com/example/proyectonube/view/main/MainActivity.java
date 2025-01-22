@@ -1,6 +1,8 @@
 package com.example.proyectonube.view.main;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,8 +16,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.proyectonube.R;
 import com.example.proyectonube.model.Book;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity implements BookListFragment.OnBookSelectedListener {
+
+    private LinearLayout searchContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
@@ -47,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
             if (itemId == R.id.nav_home) {
                 selectedFragment = new BookListFragment();
             } else if (itemId == R.id.nav_library) {
-                // selectedFragment = new LibraryFragment();
+                selectedFragment = new LibraryFragment();
             } else if (itemId == R.id.nav_profile) {
                 selectedFragment = new ProfileFragment();
             }
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
 
             return true;
         });
+
     }
 
     @Override

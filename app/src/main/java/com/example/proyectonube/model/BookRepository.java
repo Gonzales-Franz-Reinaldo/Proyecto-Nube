@@ -1,8 +1,12 @@
 package com.example.proyectonube.model;
 
+import android.text.TextUtils;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 // Clase que actúa como repositorio para interactuar con la base de datos Firestore
 public class BookRepository {
@@ -16,16 +20,43 @@ public class BookRepository {
 
     // Metodo para obtener todos los libros desde la colección "libros" en Firestore
     public void getAllBooks(OnBooksLoadedListener listener) {
-        // Accede a la colección llamada "libros"
         firestore.collection("libros")
-                .get() // Solicita todos los documentos de la colección
+                .get()
                 .addOnSuccessListener(querySnapshot -> {
-                    // Convierte los documentos obtenidos en una lista de objetos Book
                     List<Book> libros = querySnapshot.toObjects(Book.class);
-                    // Llama al metodo onBooksLoaded del listener y pasa la lista de libros
+                    // Asignar IDs usando Streams
+                    IntStream.range(0, querySnapshot.size())
+                            .forEach(i -> libros.get(i).setId(querySnapshot.getDocuments().get(i).getId()));
                     listener.onBooksLoaded(libros);
                 })
                 .addOnFailureListener(listener::onError);
+    }
+
+
+
+    // Metodo para agregar un libro a la colección "libros" en Firestore
+    public void addBook(Book book, OnCompleteListener<Void> listener) {
+        firestore.collection("libros")
+                .document()
+                .set(book)
+                .addOnCompleteListener(listener);
+    }
+
+    public void updateBook(Book book, OnCompleteListener<Void> listener) {
+        if (book == null || TextUtils.isEmpty(book.getId())) {
+            throw new IllegalArgumentException("El libro o su ID no pueden ser nulos");
+        }
+        firestore.collection("libros")
+                .document(book.getId())
+                .set(book)
+                .addOnCompleteListener(listener);
+    }
+
+    public void deleteBook(String bookId, OnCompleteListener<Void> listener) {
+        firestore.collection("libros")
+                .document(bookId)
+                .delete()
+                .addOnCompleteListener(listener);
     }
 
     // Interfaz que define los métodos para manejar los resultados de la carga de libros
@@ -36,4 +67,5 @@ public class BookRepository {
         // Metodo que se ejecuta cuando ocurre un error al cargar los libros
         void onError(Exception e);
     }
+
 }
