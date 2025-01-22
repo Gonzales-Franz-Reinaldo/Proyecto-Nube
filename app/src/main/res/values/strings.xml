@@ -2,4 +2,9 @@
     <string name="app_name">AppLibros</string>
     <string name="book_image">Imagen del libro</string>
     <string name="search_icon_description">Icono de búsqueda</string>
+
+    <string name="profile_image">Imagen de perfil</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="delete_account">Eliminar Cuenta</string>
+
 </resources>

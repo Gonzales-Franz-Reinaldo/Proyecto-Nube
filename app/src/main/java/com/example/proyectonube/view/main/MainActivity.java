@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.proyectonube.R;
 import com.example.proyectonube.model.Book;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BookListFragment.OnBookSelectedListener {
 
@@ -34,6 +35,29 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_home) {
+                selectedFragment = new BookListFragment();
+            } else if (itemId == R.id.nav_library) {
+                // selectedFragment = new LibraryFragment();
+            } else if (itemId == R.id.nav_profile) {
+                selectedFragment = new ProfileFragment();
+            }
+
+
+            if(selectedFragment != null){
+                loadFragment(selectedFragment);
+            }
+
+            return true;
         });
     }
 
