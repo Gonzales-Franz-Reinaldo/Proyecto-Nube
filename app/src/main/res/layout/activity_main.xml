@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Shop"
+            android:text="Book Store"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <!-- Ícono de búsqueda -->
         <ImageButton
@@ -47,7 +47,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Search"
             android:padding="12dp"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/ic_options" />
     </LinearLayout>
 
     <!-- Barra de búsqueda -->

@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-<!--        Un TextView con el texto "Agregar Libro" y un tamaño de texto de 24sp.-->
+        <!-- Un TextView con el texto "Agregar Libro" y un tamaño de texto de 24sp.-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,9 @@
             android:hint="Título"
             android:inputType="text"
             android:padding="12dp"
-            android:background="@drawable/edit_text_background" />
+            android:background="@drawable/text_label_background"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etAutor"
@@ -34,8 +36,9 @@
             android:hint="Autor"
             android:inputType="text"
             android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="12dp" />
+            android:background="@drawable/text_label_background"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etEditorial"
@@ -44,8 +47,9 @@
             android:hint="Editorial"
             android:inputType="text"
             android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="12dp" />
+            android:background="@drawable/text_label_background"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etFechaPublicacion"
@@ -54,8 +58,9 @@
             android:hint="Fecha de Publicación (YYYY-MM-DD)"
             android:inputType="date"
             android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="12dp" />
+            android:background="@drawable/text_label_background"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etDescripcion"
@@ -64,8 +69,9 @@
             android:hint="Descripción"
             android:inputType="text"
             android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="12dp" />
+            android:background="@drawable/text_label_background"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etFotografia"
@@ -74,9 +80,9 @@
             android:hint="URL de la Imagen"
             android:inputType="text"
             android:padding="12dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="12dp" />
+            android:background="@drawable/text_label_background"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp" />
 
         <Button
             android:id="@+id/btnAgregarLibro"
