@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText emailInput, passwordInput;
     private Button loginButton;
-    private LinearLayout googleButton, facebookButton;
+    private LinearLayout googleButton;
     private TextView registerRedirectText;
     private AuthController authController;
 
@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         googleButton = findViewById(R.id.googleButton);
-        facebookButton = findViewById(R.id.facebookButton);
         registerRedirectText = findViewById(R.id.registerRedirectText);
 
         authController = new AuthController();
